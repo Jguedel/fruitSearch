@@ -1,46 +1,50 @@
 * {
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
-:focus {
- /* TODO */
-}
-
-body {
+html, body {
   /* TODO */
+  /* MAKE BODY FULL SCREEN */
+  margin: 0;
+  height: 100%;
+  background: rgb(255,255,0);
+  background: linear-gradient(90deg, rgba(255,255,0,1) 0%, rgba(255,165,0,1) 50%, rgba(255,64,0,1) 100%);
 }
 
 input {
- /* TODO */
+ background-color: rgb(240, 191, 141);
+ border: 2px solid orangered;
+ outline: 2px solid rgb(240, 191, 141);
+ border-radius: 4px;
+ font-size: 24px;
+ width: 200px;
+ padding: 10px 0px 10px 2px;
 }
 
 .search-container {
- /* TODO */
-}
-.search-container input,
-.search-container .suggestions {
-  /* TODO */
-}
-.search-container input {
- /* TODO */
-}
-.search-container .suggestions {
-   /* TODO */
-}
+ width: 500px;
+ margin: 0px auto;
+ text-align: center;
+ position: relative;
+ top: 50%;
 
-ul {
-  /* TODO */
 }
-ul.has-suggestions {
-  /* TODO */
+ul {
+  padding: 0%;
+  margin: 0px auto;
+  width: 200px;
 }
 ul li {
-  /* TODO */
+  background-color: rgb(240, 191, 141);
+  list-style: none;
+  text-align: left;
+  padding: 2px 0px 2px 2px;
+  font-size: 20px;
 }
 ul li:hover {
-  /* TODO */
+  background-color: orangered;
+  cursor: pointer;
 }
-
-input {
-   /* TODO */
+ul li::first-letter{
+  text-transform: uppercase;
 }
