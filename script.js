@@ -119,9 +119,10 @@ function showSuggestions(results, inputVal) {
     let list = suggestions;
     list = results.forEach((word) => {
       let listItem = document.createElement("li");
-      let pettern = new RegExp(inputVal, "ig");
-      let temp = word.replaceAll(pettern, "<b>" + inputVal + "</b>");
+      let pattern = new RegExp(inputVal, "ig");
+      let temp = word.replaceAll(pattern, "<b>" + inputVal + "</b>");
       listItem.innerHTML = temp;
+      listItem.id = "click";
       suggestions.append(listItem);
     });
   }
@@ -130,9 +131,15 @@ function showSuggestions(results, inputVal) {
 //on click of suggestion populate search bar
 function useSuggestion(e) {
   e.preventDefault();
-  input.value = e.target.innerText;
-  //clear suggestions
-  suggestions.innerHTML = "";
+  if (e.target.parentElement.id == "click") {
+    input.value = e.target.parentElement.innerText;
+    //clear suggestions
+    suggestions.innerHTML = "";
+  } else if (e.target.id == "click") {
+    input.value = e.target.innerText;
+    //clear suggestions
+    suggestions.innerHTML = "";
+  }
 }
 
 input.addEventListener("keyup", searchHandler);
