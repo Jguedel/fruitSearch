@@ -88,9 +88,7 @@ function search(str) {
   let results = [];
   //look through the fruit array to find any that match the input if input length greater then 0
   if (str.length > 0) {
-    results = fruit.filter((word) => {
-      return word.toLocaleLowerCase().includes(str);
-    });
+    results = fruit.filter((word) => word.toLocaleLowerCase().includes(str));
   }
   //limit results to 4 inputs
   if (results.length > 6) {
@@ -115,31 +113,25 @@ function searchHandler(e) {
 function showSuggestions(results, inputVal) {
   suggestions.innerHTML = "";
   //only display suggestions if results has value
-  if (results.length >= 1) {
-    let list = suggestions;
-    list = results.forEach((word) => {
-      let listItem = document.createElement("li");
-      let pattern = new RegExp(inputVal, "ig");
-      let temp = word.replaceAll(pattern, "<b>" + inputVal + "</b>");
-      listItem.innerHTML = temp;
-      listItem.id = "click";
-      suggestions.append(listItem);
-    });
-  }
+  results.forEach((word) => {
+    let listItem = document.createElement("li");
+    let pattern = new RegExp(inputVal, "ig");
+    let temp = word.replaceAll(pattern, "<strong>" + inputVal + "</strong>");
+    listItem.innerHTML = temp;
+    listItem.classList.add("click");
+    suggestions.append(listItem);
+  });
 }
 
 //on click of suggestion populate search bar
 function useSuggestion(e) {
   e.preventDefault();
-  if (e.target.parentElement.id == "click") {
+  if (e.target.parentElement.classList.contains("click")) {
     input.value = e.target.parentElement.innerText;
-    //clear suggestions
-    suggestions.innerHTML = "";
-  } else if (e.target.id == "click") {
+  } else if (e.target.classList.contains("click")) {
     input.value = e.target.innerText;
-    //clear suggestions
-    suggestions.innerHTML = "";
   }
+  suggestions.innerHTML = "";
 }
 
 input.addEventListener("keyup", searchHandler);
